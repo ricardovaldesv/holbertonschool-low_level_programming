@@ -13,4 +13,6 @@ if the number is less than 0: is negative
 
 4-print_alphabt.c : program that prints the alphabet in lowercase except 'q' andb'e' , followed by a new line
 
+5-print_numbers.c : prints all single digit numbers of base 10 starting from 0, followed by a new line.
+
 
