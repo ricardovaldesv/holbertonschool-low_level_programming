@@ -7,6 +7,7 @@
  * Description: Header file of  prototypes for functions
  */
 
+void print_alphabet(void);
 int _putchar(char c);
 
 #endif
