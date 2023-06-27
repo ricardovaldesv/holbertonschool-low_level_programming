@@ -4,6 +4,7 @@
  * _strlen - This funtion return the lengh of a string.
  *
  * @s : is a string
+ * Return: the lenght of a string
  */
 
 int _strlen(char *s)
