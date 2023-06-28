@@ -33,7 +33,7 @@ char *_strcat(char *dest, char *src)
 	{
 		for (m = 0; m <= i; m++)
 			if (k = i)
-				dest[k] = ' '
+				dest[k] = ' ';
 				dest[k] = src[m];
 	}
 	dest[k+1] = '\0';
