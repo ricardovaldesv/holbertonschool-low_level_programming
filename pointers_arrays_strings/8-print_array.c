@@ -23,5 +23,5 @@ void print_array(int *a, int n)
 			printf("%d", a[i]);
 		i++;
 	}
-	_putchar('\n');
+	putchar('\n');
 }
