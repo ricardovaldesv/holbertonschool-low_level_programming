@@ -29,12 +29,12 @@ char *_strcat(char *dest, char *src)
 		j++;
 	}
 
-	for (k = i; k <= (i + j + 1); k++)
+	for (k = (i+1); k <= (i + j + 1); k++)
 	{
 		for (m = 0; m <= i; m++)
 			dest[k] = src[m];
 	}
-	dest[k] = '\0';
+	dest[k+1] = '\0';
 
 	return (dest);
 }
