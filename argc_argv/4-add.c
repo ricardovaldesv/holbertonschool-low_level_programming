@@ -12,7 +12,7 @@
 int main(int argc, char *argv[])
 
 {
-	int i, j, k, num, suma = 0;
+	int i, j, suma = 0;
 
 	for (i = 1; i < argc; i++)
 	{
@@ -24,15 +24,7 @@ int main(int argc, char *argv[])
 				return (1);
 			}
 		}
-	}
-
-	for (k = 1; k < argc; k++)
-	{
-		num = atoi(argv[k]);
-				if (num >= 0)
-				{
-				suma += num;
-				}
+		suma += atoi(argv[i]);
 	}
 	printf("%d\n", suma);
 	return (0);
