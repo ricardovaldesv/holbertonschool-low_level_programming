@@ -17,9 +17,8 @@ char *str_concat(char *s1, char *s2)
 
 	if (s1 == NULL && s2 == NULL)
 		{
-		copy = malloc(sizeof(char) * 2);
-		copy[0] = ' ';
-		copy[1] = '\0';
+		copy = malloc(sizeof(char) * 1);
+		copy[0] = '\0';
 		return (copy);
 		}
 
