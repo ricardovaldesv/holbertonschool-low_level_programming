@@ -16,26 +16,19 @@ char *str_concat(char *s1, char *s2)
 	unsigned int i, j, k;
 
 	if (s1 == NULL && s2 == NULL)
-	{
 		return (NULL);
-	}
-	else
-	{
-		if (s1 == NULL)
+		else
 		{
+		if (s1 == NULL)
 			i = 0;
-		}
 			else
 			{
 				i = 0;
 				while (s1[i] != '\0')
 				i++;
 			}
-
 		if (s2 == NULL)
-			{
 			j = 0;
-			}
 			else
 			{
 				j = 0;
@@ -49,13 +42,9 @@ char *str_concat(char *s1, char *s2)
 		return (NULL);
 
 		for (k = 0; k < i; k++)
-		{
 			copy[k] = s1[k];
-		}
 		for (k = i; k <= (i + j); k++)
-		{
 			copy[k] = s2[k - i];
 		}
-	}
 	return (copy);
 }
