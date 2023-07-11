@@ -43,7 +43,10 @@ char *str_concat(char *s1, char *s2)
 
 		for (k = 0; k < i; k++)
 			copy[k] = s1[k];
-		for (k = i; k <= (i + j); k++)
+		if (j == 0)
+			copy[k] = s1[k];
+		else
+			for (k = i; k <= (i + j); k++)
 			copy[k] = s2[k - i];
 		}
 	return (copy);
