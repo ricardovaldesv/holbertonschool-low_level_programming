@@ -23,10 +23,20 @@ int **alloc_grid(int width, int height)
 		/** Asignar memoria para el puntero doble (filas)*/
 		ar = (int **)malloc(height * sizeof(int *));
 
+		if (ar == NULL)
+			return (NULL);
+
 		/** Asignar memoria para cada fila individual*/
 		for (i = 0; i < height; i++)
 		{
 			ar[i] = (int *)malloc(width * sizeof(int));
+			if (ar[i] == NULL)
+			{
+				free(ar);
+				for (j = 0; j <= i; j++)
+					free(ar[j]);
+				return (NULL);
+			}
 		}
 
 		/** Acceder y modificar los elementos de la matriz*/
@@ -37,9 +47,6 @@ int **alloc_grid(int width, int height)
 					ar[i][j] = 0;
 				}
 			}
-
-		if (ar == NULL)
-			return (NULL);
 
 		return (ar);
 }
