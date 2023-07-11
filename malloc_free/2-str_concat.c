@@ -16,9 +16,13 @@ char *str_concat(char *s1, char *s2)
 	unsigned int i, j, k;
 
 	if (s1 == NULL && s2 == NULL)
-		return (NULL);
-		else
 		{
+		copy = malloc(sizeof(char) * 2);
+		copy[0] = ' ';
+		copy[1] = '\0';
+		return (copy);
+		}
+
 		if (s1 == NULL)
 			i = 0;
 			else
@@ -38,9 +42,6 @@ char *str_concat(char *s1, char *s2)
 
 		copy = malloc(sizeof(char) * (i + j + 1));
 
-		if (copy == NULL)
-		return (NULL);
-
 		for (k = 0; k < i; k++)
 			copy[k] = s1[k];
 		if (j == 0)
@@ -48,6 +49,6 @@ char *str_concat(char *s1, char *s2)
 		else
 			for (k = i; k <= (i + j); k++)
 			copy[k] = s2[k - i];
-		}
-	return (copy);
+
+		return (copy);
 }
