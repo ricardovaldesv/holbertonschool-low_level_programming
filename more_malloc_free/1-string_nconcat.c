@@ -28,7 +28,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		for (i = 0; s1[i] != '\0'; i++)
 			;
 	if (s2 != NULL)
-		for (j = 0; s2[j] != '\0'; j++)	
+		for (j = 0; s2[j] != '\0'; j++)
 			;
 	if (n > j)
 		copy = malloc(sizeof(char) * (i + j + 1));
@@ -52,6 +52,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			for (k = i; k < (i + n); k++)
 				copy[k] = s2[k - i];
 			copy[k] = s2[j];
-		}				
+		}	
 	return (copy);
 }
