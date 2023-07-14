@@ -16,53 +16,42 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 {
 	char *copy;
-	unsigned int i, j, k;
+	unsigned int i = 0, j = 0, k;
 
 	if (s1 == NULL && s2 == NULL)
-		{
+	{
 		copy = malloc(sizeof(char) * 1);
 		copy[0] = '\0';
 		return (copy);
-		}
-
-		if (s1 == NULL)
-			i = 0;
-			else
-			{
-				i = 0;
-				while (s1[i] != '\0')
-				i++;
-			}
-		if (s2 == NULL)
-			j = 0;
-			else
-			{
-				j = 0;
-				while (s2[j] != '\0')
-				j++;
-			}
-		if (n > j)
+	}
+	if (s1 != NULL)
+		for (i = 0; s1[i] != '\0'; i++)
+			;
+	if (s2 != NULL)
+		for (j = 0; s2[j] != '\0'; j++)	
+			;
+	if (n > j)
 		copy = malloc(sizeof(char) * (i + j + 1));
-		else
+	else
 		copy = malloc(sizeof(char) * (i + n + 1));
 
-		if (copy == NULL)
-			return (NULL);
-		for (k = 0; k < i; k++)
-			copy[k] = s1[k];
-		if (j == 0)
-			copy[k] = s1[k];
+	if (copy == NULL)
+		return (NULL);
+	for (k = 0; k < i; k++)
+		copy[k] = s1[k];
+	if (j == 0)
+		copy[k] = s1[k];
+	else
+		if (n > j)
+		{
+			for (k = i; k <= (i + j); k++)
+				copy[k] = s2[k - i];
+		}
 		else
-			if (n > j)
-			{
-				for (k = i; k <= (i + j); k++)
-					copy[k] = s2[k - i];
-			}
-			else
-			{
-				for (k = i; k < (i + n); k++)
-					copy[k] = s2[k - i];
+		{
+			for (k = i; k < (i + n); k++)
+				copy[k] = s2[k - i];
 				copy[k] = s2[j];
-			}				
-		return (copy);
+		}				
+	return (copy);
 }
