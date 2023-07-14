@@ -52,6 +52,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			for (k = i; k < (i + n); k++)
 				copy[k] = s2[k - i];
 			copy[k] = s2[j];
-		}	
+		}
 	return (copy);
 }
