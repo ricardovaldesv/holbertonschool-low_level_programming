@@ -1,123 +1,43 @@
 #include "lists.h"
 
 /**
- * delete_dnodeint_at_index - Function that deletes the node at index
- * of a dlistint_t linked list. 
- *
- * @head: pointer at head of the list
- * @index: index of the node at delete
+ * delete_dnodeint_at_index - func that delet a new node at a given position
+ * @head: pointer to the header of the nodes
+ * @index: the index of the list where the new node should be added
  * Return: 1 if it succeeded, -1 if it failed
  */
 
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-    struct dlistint_s *curNode;
-    struct dlistint_s *NodeToDel;
-    struct dlistint_s *ennode;
-    unsigned int i;
-    
-    size_t nodes = 0;
-    nodes = dlistint_len(*head);
-    
-    ennode = get_dnodeint_at_index(*head,nodes);
- 
-    curNode = *head;
-    
-    for(i=0; i<index && curNode!=NULL; i++)
-    {
-        curNode = curNode->next;
-    }
- 
-     if(index == 0)
-     {
-        struct dlistint_s * NodeToDel;
-        if(*head == NULL)
-        {
-         return (-1);
-        }
-        else
-        {
-         NodeToDel = *head;
-         *head = (*head)->next; 
-         (*head)->prev = NULL; 
-         free(NodeToDel);
-        }
-      }
-    
-    else if(curNode == ennode)
-    {
+	unsigned int i;
+	dlistint_t *node_to_delete;
 
-     if(ennode == NULL)
-     {
-       return (-1);
-     }
-     else
-     {
-        NodeToDel = ennode;
-        ennode = ennode->prev;
-        ennode->next = NULL;
-        free(NodeToDel);
-     }
+	if (!head || !*head)
+		return (-1);
+	node_to_delete = *head;
 
-    }
-    
-    else if (curNode != NULL)
-    {
-        curNode->prev->next = curNode->next;
-        curNode->next->prev = curNode->prev;
- 
-        free(curNode);
-    }
-    else
-    {
-        return (-1);
-    }
-return(1);
-}
-
-#include "lists.h"
-
-/**
- * dlistint_len - function that retun number of nodes
- * @h: pointer to list
- * Return: the number of nodes
- */
-
-size_t dlistint_len(const dlistint_t *h)
-
-{
-	size_t i = 0;
-	const dlistint_t *current = h;
-
-	while (current != NULL)
+	if (index == 0)
 	{
-		current = current->next;
-		i++;
+		*head = node_to_delete->next;
+		if (node_to_delete->next)
+			node_to_delete->next->prev = NULL;
+		free(node_to_delete);
+		return (1);
 	}
-	return (i);
-}
-
-/**
- * get_dnodeint_at_index - function that returns the nth node
- * of a dlistint_t linked list
- * @head : pointer to list
- * @index: position of node
- * Return: pointer at node
- */
-
-dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
-
-
-{
-	unsigned int i = 0;
-	dlistint_t *current = head;
-
-	while (current != NULL && i < index)
+	for (i = 0; node_to_delete && i < index; i++)
 	{
-		current = current->next;
-		i++;
+		node_to_delete = node_to_delete->next;
 	}
-	return (current);
+	if (!node_to_delete)
+		return (-1);
+	if (!node_to_delete->next)
+	{
+		node_to_delete->prev->next = NULL;
+		free(node_to_delete);
+		return (1);
+	}
+	node_to_delete->prev->next = node_to_delete->next;
+	node_to_delete->next->prev = node_to_delete->prev;
+	free(node_to_delete);
+	return (1);
 }
-
-
