@@ -73,4 +73,51 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
         return (-1);
     }
 return(1);
-} 
+}
+
+#include "lists.h"
+
+/**
+ * dlistint_len - function that retun number of nodes
+ * @h: pointer to list
+ * Return: the number of nodes
+ */
+
+size_t dlistint_len(const dlistint_t *h)
+
+{
+	size_t i = 0;
+	const dlistint_t *current = h;
+
+	while (current != NULL)
+	{
+		current = current->next;
+		i++;
+	}
+	return (i);
+}
+
+/**
+ * get_dnodeint_at_index - function that returns the nth node
+ * of a dlistint_t linked list
+ * @head : pointer to list
+ * @index: position of node
+ * Return: pointer at node
+ */
+
+dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
+
+
+{
+	unsigned int i = 0;
+	dlistint_t *current = head;
+
+	while (current != NULL && i < index)
+	{
+		current = current->next;
+		i++;
+	}
+	return (current);
+}
+
+
