@@ -14,7 +14,7 @@ void hash_table_print(const hash_table_t *ht)
 
 	if (ht == NULL)
 		return;
-	n= 0;
+	n = 0;
 	printf("{");
 	for (i = 0; ht && i < ht->size; i++)
 	{
@@ -26,7 +26,7 @@ void hash_table_print(const hash_table_t *ht)
 				printf(", ");
 			}
 			printf("'%s': '%s'", p->key, p->value);
-			p = p-> next;
+			p = p->next;
 			n = 1;
 		}
 	}
