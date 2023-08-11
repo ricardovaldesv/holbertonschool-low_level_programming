@@ -1,4 +1,5 @@
 #include "hash_tables.h"
+#include <stdlib.h>
 
 /**
  * hash_table_delete - function that deletes a hash table.
@@ -13,18 +14,17 @@ void hash_table_delete(hash_table_t *ht)
 		return;
 
 	unsigned long int i;
-	hash_node_t *p, *current, *next;
+	hash_node_t *p, *next;
 
 	for (i = 0; i < ht->size; i++)
 	{
 		p = ht->array[i];
 		while (p != NULL)
 		{
-			current = p;
-			next = current->next;
-			free(current->key);
-			free(current->value);
-			free(current);
+			next = p->next;
+			free(p->key);
+			free(p->value);
+			free(p);
 			p = next;
 		}
 	}
